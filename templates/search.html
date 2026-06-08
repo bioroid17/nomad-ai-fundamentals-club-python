@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <title>AI Fundamentals Club Python</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Nomad Jobs</h1>
+      <h4>What job are you looking for?</h4>
+      <form action="/search">
+        <input
+          required
+          type="text"
+          name="keyword"
+          placeholder="Write keyword please"
+        />
+        <button type="submit">Search</button>
+      </form>
+      {% if jobs %}
+      <div class="jobs">
+        {% for job in jobs %}
+        <div class="job">
+          <h4>{{ job.title }}</h4>
+          <h6><u>{{ job.company_name }}</u></h6>
+          <p>{{ job.description }}</p>
+          <a href="{{ job.link }}">Apply</a>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No jobs found.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>
